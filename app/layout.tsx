@@ -29,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt" className={`${serif.variable} ${sans.variable}`} suppressHydrationWarning>
       <head>
+        <link rel="preload" as="image" href="/media/hero.jpg" />
         <script dangerouslySetInnerHTML={{ __html: boot }} />
       </head>
       <body className="font-sans antialiased">

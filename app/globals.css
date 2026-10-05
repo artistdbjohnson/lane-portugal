@@ -25,7 +25,6 @@ html[data-theme="dark"] {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--nav-h);
 }
 
 html[data-aperture="play"] {
@@ -65,9 +64,13 @@ a {
   text-underline-offset: 0.22em;
 }
 
-/* Headings land beneath the sticky bar, whose measured height includes the safe area. */
+/* Headings land beneath the sticky bar. --nav-h already includes the safe-area padding. */
 [id] {
   scroll-margin-top: var(--nav-h);
+}
+
+#pesquisa {
+  scroll-margin-top: 0;
 }
 
 .plate {

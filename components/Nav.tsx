@@ -36,10 +36,11 @@ export function Nav() {
   }, [open]);
 
   function go(href: string) {
-    setOpen(false);
     const id = href.replace("#", "");
-    const target = document.getElementById(id);
-    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    setOpen(false);
+    window.setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 60);
   }
 
   return (

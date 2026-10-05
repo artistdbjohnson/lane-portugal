@@ -88,10 +88,12 @@ function Hero() {
 function Properties() {
   const copy = useDict();
   return (
-    <section id="propriedades" className="mx-auto max-w-page px-5 py-24 md:px-10 md:py-32">
+    <section className="mx-auto max-w-page px-5 py-24 md:px-10 md:py-32">
       <InView>
-        <Kicker>{copy.propertiesKicker}</Kicker>
-        <h2 className="mt-4 max-w-3xl font-serif text-5xl leading-[0.95] md:text-6xl">{copy.propertiesTitle}</h2>
+        <div id="propriedades">
+          <Kicker>{copy.propertiesKicker}</Kicker>
+          <h2 className="mt-4 max-w-3xl font-serif text-5xl leading-[0.95] md:text-6xl">{copy.propertiesTitle}</h2>
+        </div>
       </InView>
       <article className="mt-12 grid overflow-hidden bg-navy text-[#F4F1EC] md:grid-cols-12">
         <a href={week.listingUrl} className="group relative md:col-span-7 lg:col-span-8">
@@ -122,11 +124,13 @@ function Premium() {
   const lead = byId("23326290");
   const rest = premium.slice(1);
   return (
-    <section id="premium" className="border-t border-[var(--line)]">
+    <section className="border-t border-[var(--line)]">
       <div className="mx-auto grid max-w-page gap-10 px-5 py-24 md:px-10 md:py-32 lg:grid-cols-12 lg:gap-16">
         <InView className="lg:col-span-4">
-          <Kicker>{copy.premiumKicker}</Kicker>
-          <h2 className="mt-4 font-serif text-5xl leading-[0.95] md:text-6xl">{copy.premiumTitle}</h2>
+          <div id="premium">
+            <Kicker>{copy.premiumKicker}</Kicker>
+            <h2 className="mt-4 font-serif text-5xl leading-[0.95] md:text-6xl">{copy.premiumTitle}</h2>
+          </div>
           <p className="mt-6 max-w-sm text-base leading-relaxed text-muted">{copy.premiumLead}</p>
         </InView>
         <div className="lg:col-span-8">
@@ -173,19 +177,21 @@ function Card({ item, large = false }: { item: Listing; large?: boolean }) {
 function Developments() {
   const copy = useDict();
   const locale = useLocale();
-  const plate = byId("19592606");
+  const plate = byId("21651680");
   return (
     <section id="empreendimentos" className="relative min-h-[70vh]">
       <img src={plate.photo} alt={plate.title} className="plate absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-[#0B1620]/45" />
-      <div className="relative mx-auto flex min-h-[70vh] max-w-page flex-col justify-end px-5 py-20 text-[#F4F1EC] md:px-10">
+      <div className="relative mx-auto flex min-h-[70vh] max-w-page flex-col justify-start px-5 pb-16 pt-12 text-[#F4F1EC] md:px-10 md:pt-16">
         <InView>
+          <div>
           <Kicker>{copy.devKicker}</Kicker>
           <h2 className="mt-4 max-w-3xl font-serif text-5xl leading-[0.95] md:text-6xl">{copy.devTitle}</h2>
           <p className="mt-5 max-w-md text-[#F4F1EC]/80">{copy.devBody}</p>
           <a href={lane("/empreendimentos", locale)} className="mt-8 inline-flex w-fit rounded-full border border-[#F4F1EC]/70 px-5 py-2.5 text-sm hover:bg-[#F4F1EC] hover:text-navy">
             {copy.devLink}
           </a>
+          </div>
         </InView>
       </div>
     </section>
@@ -196,14 +202,16 @@ function Zones() {
   const copy = useDict();
   const locale = useLocale();
   return (
-    <section id="zonas" className="mx-auto grid max-w-page items-end gap-12 px-5 py-24 md:px-10 md:py-32 lg:grid-cols-12">
+    <section className="mx-auto grid max-w-page items-start gap-12 px-5 py-24 md:px-10 md:py-32 lg:grid-cols-12">
       <InView className="lg:col-span-5">
-        <img src="/media/area.jpg" alt="Cascais" className="plate aspect-[4/3] w-full max-w-[640px] object-cover" />
+        <img src="/media/area.jpg" alt="Cascais" className="plate aspect-[4/3] w-full max-w-[640px] border border-[var(--line)] object-cover" />
         <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">{copy.zonesCaption}</p>
       </InView>
       <div className="lg:col-span-7">
-        <Kicker>{copy.zonesKicker}</Kicker>
-        <h2 className="mt-4 max-w-xl font-serif text-5xl leading-[0.95] md:text-6xl">{copy.zonesTitle}</h2>
+        <div id="zonas">
+          <Kicker>{copy.zonesKicker}</Kicker>
+          <h2 className="mt-4 max-w-xl font-serif text-5xl leading-[0.95] md:text-6xl">{copy.zonesTitle}</h2>
+        </div>
         <ul className="mt-10 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-2">
           {copy.zones.map((zone) => (
             <li key={zone.href}>
@@ -222,13 +230,15 @@ function Cascais() {
   const copy = useDict();
   const plate = byId("25884958");
   return (
-    <section id="cascais" className="border-t border-[var(--line)]">
+    <section className="border-t border-[var(--line)]">
       <div className="grid lg:grid-cols-2">
         <img src={plate.photo} alt={plate.title} className="plate h-[70vw] max-h-[820px] min-h-[360px] w-full object-cover lg:h-auto" />
         <div className="flex flex-col justify-center px-5 py-16 md:px-14 md:py-24">
           <InView>
-            <Kicker>{copy.cascaisKicker}</Kicker>
-            <h2 className="mt-4 font-serif text-5xl leading-[0.95] md:text-6xl">{copy.cascaisTitle}</h2>
+            <div id="cascais">
+              <Kicker>{copy.cascaisKicker}</Kicker>
+              <h2 className="mt-4 font-serif text-5xl leading-[0.95] md:text-6xl">{copy.cascaisTitle}</h2>
+            </div>
             <div className="mt-8 max-w-xl space-y-5 text-[1.05rem] leading-relaxed">
               {copy.cascais.map((paragraph) => (
                 <p key={paragraph.slice(0, 24)}>{paragraph}</p>
@@ -263,11 +273,11 @@ function OffMarket() {
   }
 
   return (
-    <section id="off-market" className="relative">
+    <section className="relative" aria-labelledby="off-market">
       <img src={plate.photo} alt={plate.title} className="plate absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-[#0B1620]/35" />
       <div className="relative mx-auto max-w-page px-5 py-20 md:px-10 md:py-28">
-        <form onSubmit={onSubmit} className="max-w-xl bg-[var(--paper)] px-6 py-10 text-ink md:px-10 md:py-12" noValidate>
+        <form id="off-market" onSubmit={onSubmit} className="max-w-xl bg-[var(--paper)] px-6 py-10 text-ink md:px-10 md:py-12" noValidate>
           <Kicker>{copy.offKicker}</Kicker>
           <h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">{copy.offTitle}</h2>
           <div className="mt-6 space-y-4 text-[0.98rem] leading-relaxed">
@@ -316,14 +326,16 @@ function Riviera() {
   const copy = useDict();
   const plate = byId("20436064");
   return (
-    <section id="investir" className="grid lg:grid-cols-12">
+    <section className="grid lg:grid-cols-12">
       <div className="relative lg:col-span-5">
         <img src={plate.photo} alt={plate.title} className="plate h-[78vw] min-h-[420px] w-full object-cover lg:absolute lg:inset-0 lg:h-full" />
       </div>
       <div className="px-5 py-16 md:px-14 md:py-24 lg:col-span-7">
         <InView>
-          <Kicker>{copy.rivieraKicker}</Kicker>
-          <h2 className="mt-4 font-serif text-5xl leading-[0.95] md:text-7xl">{copy.rivieraTitle}</h2>
+          <div id="investir">
+            <Kicker>{copy.rivieraKicker}</Kicker>
+            <h2 className="mt-4 font-serif text-5xl leading-[0.95] md:text-7xl">{copy.rivieraTitle}</h2>
+          </div>
           <div className="mt-8 max-w-2xl space-y-5 text-[1.05rem] leading-relaxed">
             {copy.riviera.map((paragraph) => (
               <p key={paragraph.slice(0, 28)}>{paragraph}</p>
@@ -339,11 +351,13 @@ function Riviera() {
 function Ledger() {
   const copy = useDict();
   return (
-    <section id="guia" className="border-t border-[var(--line)]">
+    <section className="border-t border-[var(--line)]">
       <div className="mx-auto max-w-3xl px-5 py-24 md:px-8 md:py-32">
         <InView>
-          <Kicker>{copy.ledgerKicker}</Kicker>
-          <h2 className="mt-4 font-serif text-5xl leading-[0.95] md:text-6xl">{copy.ledgerTitle}</h2>
+          <div id="guia">
+            <Kicker>{copy.ledgerKicker}</Kicker>
+            <h2 className="mt-4 font-serif text-5xl leading-[0.95] md:text-6xl">{copy.ledgerTitle}</h2>
+          </div>
           <p className="mt-6 text-[1.05rem] leading-relaxed">{copy.ledgerIntro}</p>
         </InView>
         <div className="mt-10 border-b border-[var(--line)]">
@@ -369,7 +383,7 @@ function Collapse({ node, nested = false }: { node: Leaf; nested?: boolean }) {
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
       >
-        <span className={nested ? "text-[0.98rem] leading-snug" : "font-serif text-2xl leading-tight md:text-[1.7rem]"}>{node.title}</span>
+        <span className={nested ? "min-w-0 text-[0.98rem] leading-snug" : "min-w-0 font-serif text-2xl leading-tight md:text-[1.7rem]"}>{node.title}</span>
         <span className="shrink-0 font-serif text-xl text-brass" aria-hidden="true">{open ? "–" : "+"}</span>
       </button>
       <div id={panelId} className="collapse-panel" data-open={open ? "true" : "false"}>
@@ -412,13 +426,15 @@ function About() {
   const copy = useDict();
   const plate = byId("26318693");
   return (
-    <section id="empresa" className="border-t border-[var(--line)]">
+    <section className="border-t border-[var(--line)]">
       <div className="grid lg:grid-cols-2">
         <img src={plate.photo} alt={plate.title} className="plate h-[72vw] min-h-[380px] w-full object-cover lg:h-full" />
         <div className="px-5 py-16 md:px-14 md:py-24">
           <InView>
-            <Kicker>{copy.aboutKicker}</Kicker>
-            <h2 className="mt-4 font-serif text-5xl leading-[0.95]">{copy.aboutTitle}</h2>
+            <div id="empresa">
+              <Kicker>{copy.aboutKicker}</Kicker>
+              <h2 className="mt-4 font-serif text-5xl leading-[0.95]">{copy.aboutTitle}</h2>
+            </div>
             <div className="mt-8 max-w-xl space-y-5 leading-relaxed">
               {copy.about.map((paragraph) => (
                 <p key={paragraph.slice(0, 24)}>{paragraph}</p>
@@ -454,12 +470,14 @@ function Recruit() {
   const copy = useDict();
   const plate = byId("24495514");
   return (
-    <section id="recrutamento" className="border-t border-[var(--line)]">
+    <section className="border-t border-[var(--line)]">
       <div className="mx-auto grid max-w-page items-start gap-12 px-5 py-24 md:px-10 md:py-32 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <InView>
-            <Kicker>{copy.recruitKicker}</Kicker>
-            <h2 className="mt-4 font-serif text-5xl leading-[0.95]">{copy.recruitTitle}</h2>
+            <div id="recrutamento">
+              <Kicker>{copy.recruitKicker}</Kicker>
+              <h2 className="mt-4 font-serif text-5xl leading-[0.95]">{copy.recruitTitle}</h2>
+            </div>
             <div className="mt-6 max-w-2xl space-y-4 leading-relaxed">
               {copy.recruit.map((paragraph) => (
                 <p key={paragraph.slice(0, 24)}>{paragraph}</p>
@@ -515,10 +533,12 @@ function Newsletter() {
   }
 
   return (
-    <section id="newsletter" className="border-t border-[var(--line)]">
+    <section className="border-t border-[var(--line)]">
       <div className="mx-auto max-w-3xl px-5 py-24 md:px-8 md:py-28">
-        <Kicker>{copy.newsKicker}</Kicker>
-        <h2 className="mt-4 font-serif text-5xl leading-tight">{copy.newsTitle}</h2>
+        <div id="newsletter">
+          <Kicker>{copy.newsKicker}</Kicker>
+          <h2 className="mt-4 font-serif text-5xl leading-tight">{copy.newsTitle}</h2>
+        </div>
         <p className="mt-5 text-sm leading-relaxed text-muted">{copy.newsNote}</p>
         <form onSubmit={onSubmit} className="mt-8" noValidate>
           <label className="block text-xs uppercase tracking-[0.16em] text-muted">
@@ -564,12 +584,14 @@ function Contact() {
   }
 
   return (
-    <section id="contactos" className="border-t border-[var(--line)]">
+    <section className="border-t border-[var(--line)]">
       <div className="grid lg:grid-cols-2">
         <img src={plate.photo} alt={plate.title} className="plate h-[70vw] min-h-[360px] w-full object-cover lg:h-full" />
         <div className="px-5 py-16 md:px-14 md:py-24">
-          <Kicker>{copy.contactKicker}</Kicker>
-          <h2 className="mt-4 font-serif text-5xl leading-[0.95]">{copy.contactTitle}</h2>
+          <div id="contactos">
+            <Kicker>{copy.contactKicker}</Kicker>
+            <h2 className="mt-4 font-serif text-5xl leading-[0.95]">{copy.contactTitle}</h2>
+          </div>
           <div className="mt-6 max-w-xl space-y-4 leading-relaxed">
             {copy.contact.map((paragraph) => (
               <p key={paragraph.slice(0, 24)}>{paragraph}</p>
