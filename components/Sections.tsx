@@ -6,7 +6,7 @@ import type { Leaf } from "@/lib/dictionary";
 import { useDict } from "@/lib/dictionary";
 import { EMAIL, lane, MAPS, PHONE_DISPLAY, PHONE_TEL, RECRUIT_EMAIL, SOCIAL } from "@/lib/lane";
 import { useLocale } from "@/lib/prefs";
-import { InView, TextEffect } from "./motion";
+import { BrassPrice, BrassRule, InView, TextEffect } from "./motion";
 
 type Listing = (typeof inventory.listings)[number];
 
@@ -105,7 +105,9 @@ function Properties() {
             <a href={week.listingUrl} className="hover:text-brass">{week.title}</a>
           </h3>
           <p className="text-sm text-[#B4ADA3]">{week.location}</p>
-          <p className="font-serif text-3xl text-brass">{week.price}</p>
+          <p className="font-serif text-3xl text-brass">
+            <BrassPrice>{week.price}</BrassPrice>
+          </p>
           <p className="text-xs uppercase tracking-[0.18em] text-[#B4ADA3]">{week.typology}</p>
           <a href={week.listingUrl} className="text-sm underline decoration-brass/70 underline-offset-4">{copy.viewListing}</a>
         </div>
@@ -163,7 +165,9 @@ function Card({ item, large = false }: { item: Listing; large?: boolean }) {
       </div>
       <div className="mt-3 flex items-baseline justify-between gap-4">
         <p className="text-sm text-muted">{item.location}</p>
-        <p className="whitespace-nowrap text-sm tracking-wide text-brass">{item.price}</p>
+        <p className="whitespace-nowrap text-sm tracking-wide text-brass">
+          <BrassPrice>{item.price}</BrassPrice>
+        </p>
       </div>
       <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-muted">
         {item.badge ? <span className="mr-2 text-brass">{copy.newPrice}</span> : null}
@@ -383,7 +387,10 @@ function Collapse({ node, nested = false }: { node: Leaf; nested?: boolean }) {
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
       >
-        <span className={nested ? "min-w-0 text-[0.98rem] leading-snug" : "min-w-0 font-serif text-2xl leading-tight md:text-[1.7rem]"}>{node.title}</span>
+        <span className={`relative min-w-0 ${nested ? "text-[0.98rem] leading-snug" : "font-serif text-2xl leading-tight md:text-[1.7rem]"}`}>
+          {node.title}
+          <BrassRule drawn={open} inlay />
+        </span>
         <span className="shrink-0 font-serif text-xl text-brass" aria-hidden="true">{open ? "–" : "+"}</span>
       </button>
       <div id={panelId} className="collapse-panel" data-open={open ? "true" : "false"}>

@@ -83,3 +83,49 @@ export function TextEffect({
     </span>
   );
 }
+
+/** Once, when the node is actually in view. Stays false under reduced motion. */
+export function useOnceDrawn<T extends Element>() {
+  const ref = useRef<T>(null);
+  const [drawn, setDrawn] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setDrawn(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.85 },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return { ref, drawn };
+}
+
+/** 1px brass inlay. Measure matches the price; the ledger uses a short tick. */
+export function BrassRule({ drawn, inlay = false }: { drawn: boolean; inlay?: boolean }) {
+  return (
+    <span
+      className={inlay ? "brass-rule brass-rule-inlay" : "brass-rule brass-rule-measure"}
+      data-drawn={drawn ? "true" : "false"}
+      aria-hidden="true"
+    />
+  );
+}
+
+export function BrassPrice({ children }: { children: ReactNode }) {
+  const { ref, drawn } = useOnceDrawn<HTMLSpanElement>();
+  return (
+    <span ref={ref} className="relative inline-block">
+      {children}
+      <BrassRule drawn={drawn} />
+    </span>
+  );
+}

@@ -195,11 +195,41 @@ select.field-input {
   grid-template-rows: 1fr;
 }
 
+/* Brass inlay: one material, two quiet places. Ease-out, then still. */
+.brass-rule {
+  position: absolute;
+  left: 0;
+  bottom: -0.12em;
+  height: 1px;
+  background: #9a7b4f;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.brass-rule-measure {
+  width: 100%;
+}
+
+.brass-rule-inlay {
+  width: 2.25rem;
+}
+
+.brass-rule[data-drawn="true"] {
+  transform: scaleX(1);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .collapse-panel,
   .set-word,
   .aperture-mark {
     animation: none !important;
     transition: none !important;
+  }
+
+  .brass-rule {
+    transition: none !important;
+    transform: scaleX(0) !important;
   }
 }
